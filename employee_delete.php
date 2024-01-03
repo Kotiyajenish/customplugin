@@ -15,8 +15,6 @@ function employee_delete() {
         echo "Record Deleted!!";
 
     }
-
-    echo get_site_url() .'/wp-admin/admin.php?page=Employee_List';
-
+    echo "<script type='text/javascript'>window.location.href='http://192.168.1.128/gutenberg/wp-admin/admin.php?page=Employee_Listing';</script>";
 }
 ?>

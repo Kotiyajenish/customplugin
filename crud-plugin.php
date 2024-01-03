@@ -33,6 +33,8 @@ function jal_install() {
 register_activation_hook(__FILE__, 'jal_install');
 
 
+// add_action('init', 'custom_redirect_function');
+
 
 //adding in menu
 add_action('admin_menu', 'at_try_menu');

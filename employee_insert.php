@@ -1,4 +1,12 @@
-<?php function employee_insert(){ ?>
+<?php function employee_insert()
+{ ?>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <?php
+    $apiUrl = 'https://restcountries.com/v3.1/all';
+    $response = file_get_contents($apiUrl);
+    $countries = json_decode($response, true);
+    ?>
     <table>
         <thead>
             <tr>
@@ -7,7 +15,7 @@
             </tr>
         </thead>
         <tbody>
-            <form name="frm" action="#" method="post" enctype="multipart/form-data">
+            <form id="frm" name="frm" action="#" method="post" enctype="multipart/form-data">
                 <tr>
                     <td>First Name: </td>
                     <td><input type="text" name="nm"></td>
@@ -47,9 +55,23 @@
                     <td>State: </td>
                     <td><input type="text" name="state"></td>
                 </tr>
+                <?php
+                $apiUrl = 'https://restcountries.com/v3.1/all';
+                $response = file_get_contents($apiUrl);
+                $countries = json_decode($response, true);
+                ?>
                 <tr>
                     <td>Country: </td>
-                    <td><input type="text" name="country"></td>
+                    <td><?php
+                        if (!empty($countries)) {
+                            echo '<select id="country" name="country">';
+                            echo '<option value="">Select a country</option>';
+                            foreach ($countries as $country) {
+                                echo '<option value="' . $country['name']['common'] . '">' . $country['name']['common'] . '</option>';
+                            }
+                        }
+                        ?>
+                    </td>
                 </tr>
                 <tr>
                     <td></td>
@@ -103,7 +125,7 @@
         }
 
         echo $statusMsg;
-
+        $selectedCountry = '';
         $wpdb->insert(
             $table_name,
             array(

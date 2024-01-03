@@ -13,6 +13,54 @@
             padding: 20px;
             text-align: center;
         }
+
+        .wrap {
+            margin: 20px;
+        }
+
+        .wp-list-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .wp-list-table th,
+        .wp-list-table td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .wp-list-table th {
+            background-color: #f2f2f2;
+        }
+
+        .wp-list-table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .wp-list-table tbody tr:hover {
+            background-color: #e0e0e0;
+        }
+
+        .wp-list-table img {
+            max-width: 100px;
+            max-height: 100px;
+        }
+
+        td img {
+            width: 100% !important;
+            max-width: 100px;
+            object-fit: cover;
+        }
+
+        td {
+            vertical-align: middle !important;
+            text-align: center !important;
+        }
+
+        th {
+            text-align: center !important;
+        }
     </style>
     <div class="wrap">
         <table class="wp-list-table widefat fixed striped table-view-list pages">
@@ -54,17 +102,8 @@
                         <td><?= $employee->contact; ?></td>
                         <td><?= $employee->state; ?></td>
                         <td><?= $employee->country; ?></td>
-                        <td>
-                            <a href="<?php echo admin_url('admin.php?page=Employee_Update&id=' . $employee->id); ?>" class="updatebtn">
-                                <i class="fas fa-edit"></i>
-                            </a>
-                        </td>
-                        <td>
-                            <a class="second" href="<?php echo admin_url('admin.php?page=Employee_Delete&id=' . $employee->id); ?>">
-                                <i class="fas fa-trash-alt"></i>
-                            </a>
-                        </td>
-
+                        <td><a href="<?php echo admin_url('admin.php?page=Employee_Update&id=' . $employee->id); ?>" class="updatebtn"><i class="fas fa-edit"></i></a></td>
+                        <td><a class="second" href="<?php echo admin_url('admin.php?page=Employee_Delete&id=' . $employee->id); ?>"><i class="fas fa-trash-alt"></i></a></td>
                     </tr>
                 <?php
                     $counter++;
